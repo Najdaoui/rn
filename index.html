@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Planner Tools</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#todo">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#flashcards">Flashcards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#calendar">Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lessons">Lessons</a>
+                    </li>
+                    <!-- Add Timer Link Here -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#timer">Timer</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <!-- Theme Toggle Button -->
+                    <button id="themeToggle" class="btn btn-outline-dark me-2" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                    <i class="fas fa-add"></i> Add Task
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="titleContainer" class="container">
+        <div id="sectionTitle" class="d-flex justify-content-between align-items-center custom-translate-y">
+            <div class="d-flex align-items-end">
+                <h1 id="home">Today's Task</h1>
+                <p id="today" class="font-italic"></p>
+            </div>
+        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="d-flex align-items-center nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="d-flex align-items-center nav-link" id="open-tab" data-bs-toggle="tab" data-bs-target="#open" type="button" role="tab" aria-controls="open" aria-selected="false">
+                    Open
+                    <span class="badge bg-secondary">7</span>
+                </button>                
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="d-flex align-items-center nav-link" id="closed-tab" data-bs-toggle="tab" data-bs-target="#closed" type="button" role="tab" aria-controls="closed" aria-selected="false">
+                Closed
+                <span class="badge bg-secondary">3</span>
+              </button>
+            </li>
+        </ul>
+        <div class="Output"></div>
+        <div class="tab-content" id="myTabContent">
+            <!-- Onglet All -->
+            <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                <!-- Contenu dynamique affiché ici -->
+            </div>
+            
+            <!-- Onglet Open -->
+            <div class="tab-pane fade" id="open" role="tabpanel" aria-labelledby="open-tab">
+                <!-- Contenu dynamique affiché ici -->
+            </div>
+            
+            <!-- Onglet Closed -->
+            <div class="tab-pane fade" id="closed" role="tabpanel" aria-labelledby="closed-tab">
+                <!-- Contenu dynamique affiché ici -->
+            </div>
+        </div>
+              
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal fade" tabindex="-1" id="addTaskModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulaire de création de tâche -->
+                    <form id="addTaskForm">
+                        <div class="mb-3">
+                            <label for="taskTitle" class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="taskTitle" placeholder="Enter task title">
+                            <div id="titleError" class="text-danger" style="display: none;">Title is required</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="taskDescription" rows="3" placeholder="Enter task description"></textarea>
+                            <div id="descriptionError" class="text-danger" style="display: none;">Description is required</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDueDate" class="form-label">Due Date</label>
+                            <input type="date" class="form-control" id="taskDueDate">
+                            <div id="dueDateError" class="text-danger" style="display: none;">Due date is required</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskPriority" class="form-label">Priority</label>
+                            <select class="form-select" id="taskPriority">
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                            <div id="priorityError" class="text-danger" style="display: none;">Priority is required</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveTaskBtn">Save Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="Tasks.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+.navbar {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.Empty {
+    width: 25%;
+}
+
+.custom-translate-y {
+    --translate-y: 0;
+    transform: translateY(var(--translate-y));
+}
+
+/* Conteneur du titre et de la date */
+.d-flex.align-items-end h1 {
+    font-size: 1.5rem; /* Ajuste la taille pour mieux s'aligner avec les onglets */
+    margin-right: 10px; /* Ajoute un espace entre le titre et la date */
+    margin-bottom: 0; /* Supprime la marge par défaut pour un meilleur alignement */
+}
+
+.d-flex.align-items-end p {
+    margin: 0; /* Supprime les marges par défaut pour un meilleur alignement */
+}
+
+/* Conteneur du titre */
+
+#titleContainer {
+    position: relative; /* Permet de positionner le titre par rapport à son conteneur principal */
+    z-index: 1; /* Place le titre au-dessus des onglets */
+}
+/* Onglets */
+#myTab {
+    position: relative; /* Permet de positionner les onglets par rapport à leur conteneur principal */
+    z-index: 2; /* Place les onglets au-dessus du titre */
+    justify-content: flex-end; /* Aligne les onglets à droite */
+    margin-bottom: 0; /* Supprime la marge entre les onglets et le conteneur principal */
+}
+
+[data-bs-toggle="tab"] {
+    gap: 0.5rem; /* Ajoute un espace entre le texte et le badge */
+}
+
+tr {
+    vertical-align: middle;
+}
+
+tr.checked {
+    position: relative;
+}
+
+tr.checked::after {
+    content: "";
+    position: absolute;
+    width: calc(100% - 200px);
+    height: 2px;
+    right: 150px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgb(0 0 0 / 25%);
+}
+
+tr.checked td:not(.td-actions) {
+    opacity: 0.5;
+}
