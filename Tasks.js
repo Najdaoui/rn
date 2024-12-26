@@ -2,7 +2,7 @@
 const submitButton = document.getElementById("saveTaskBtn");
 
 // Sélectionner le modal
-const myModal = new bootstrap.Modal(document.getElementById("addTaskModal"));
+const myModal = new bootstrap.Modal(document.getElementById("addTasksModal"));
 
 // Ajout d'un écouteur d'événements pour le clic
 submitButton.addEventListener("click", function() {
@@ -39,7 +39,7 @@ submitButton.addEventListener("click", function() {
     myModal.hide();
 
     // Réinitialiser le formulaire
-    document.querySelector("#addTaskModal form").reset();
+    document.querySelector("#addTasksModal form").reset();
 
 
 });
