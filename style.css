@@ -12,7 +12,7 @@
 }
 
 /* Conteneur du titre et de la date */
-.d-flex.align-items-end h1 {
+.custom-translate-y h1 {
     font-size: 1.5rem; /* Ajuste la taille pour mieux s'aligner avec les onglets */
     margin-right: 10px; /* Ajoute un espace entre le titre et la date */
     margin-bottom: 0; /* Supprime la marge par défaut pour un meilleur alignement */
@@ -24,7 +24,7 @@
 
 /* Conteneur du titre */
 
-#titleContainer {
+#tasks {
     position: relative; /* Permet de positionner le titre par rapport à son conteneur principal */
     z-index: 1; /* Place le titre au-dessus des onglets */
 }
@@ -61,4 +61,24 @@ tr.checked::after {
 
 tr.checked td:not(.td-actions) {
     opacity: 0.5;
+}
+
+.row {
+    margin-top: 1rem !important;
+}
+
+.container-fade {
+    display: block;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        transform: translateY(0);
+    }
+}
+
+.nav-link.active {
+    color: #0d6efd !important;
 }
