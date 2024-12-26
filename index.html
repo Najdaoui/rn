@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#todo">Tasks</a>
+                        <a class="nav-link active" href="#tasks">Tasks</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#flashcards">Flashcards</a>
@@ -41,14 +41,16 @@
                     </button>
                 </div>
                 
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
-                    <i class="fas fa-add"></i> Add Task
+                <button id="action" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTasksModal">
+                    <i class="fas fa-add"></i> <span id="actionText">Add Task</span>
                 </button>
             </div>
         </div>
     </nav>
     
-    <div id="titleContainer" class="container">
+    <!-- Tasks Content -->
+
+    <div id="tasks" class="js-container container container-fade"> <!-- Display -->
         <div id="sectionTitle" class="d-flex justify-content-between align-items-center custom-translate-y">
             <div class="d-flex align-items-end">
                 <h1 id="home">Today's Task</h1>
@@ -72,7 +74,7 @@
               </button>
             </li>
         </ul>
-        <div class="Output"></div>
+
         <div class="tab-content" id="myTabContent">
             <!-- Onglet All -->
             <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
@@ -92,8 +94,101 @@
               
     </div>
 
+    <!-- Flashcards Content -->
+    <div id="flashcards" class="js-container container d-none container-fade mt-4">
+        <div id="sectionTitle" class="d-flex justify-content-between align-items-center custom-translate-y">
+            <div class="d-flex align-items-end">
+                <h1 id="flashcards">Flashcards</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Flashcard Title</h5>
+                        <p class="card-text">Flashcard Description</p>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Flashcard Title</h5>
+                        <p class="card-text">Flashcard Description</p>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Flashcard Title</h5>
+                        <p class="card-text">Flashcard Description</p>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calendar Content -->
+    <div id="calendar" class="js-container container d-none container-fade mt-4">
+        <div id="sectionTitle" class="d-flex justify-content-between align-items-center custom-translate-y">
+            <div class="d-flex align-items-end">
+                <h1 id="calendar">Calendar</h1>
+            </div>
+        </div>
+        <div id="calendar"></div>
+    </div>
+
+    <!-- Lessons Content -->
+    <div id="lessons" class="js-container container d-none container-fade mt-4">
+        <div id="sectionTitle" class="d-flex justify-content-between align-items-center custom-translate-y">
+            <div class="d-flex align-items-end">
+                <h1 id="lessons">Lessons</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Lesson Title</h5>
+                        <p class="card-text">Lesson Description</p>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timer Content -->
+    <div id="timer" class="js-container container d-none container-fade mt-4">
+        <div id="sectionTitle" class="d-flex justify-content-between align-items-center custom-translate-y">
+            <div class="d-flex align-items-end">
+                <h1 id="timer">Timer</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Timer Title</h5>
+                        <p class="card-text">Timer Description</p>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Add Task Modal -->
-    <div class="modal fade" tabindex="-1" id="addTaskModal">
+    <div class="modal fade" tabindex="-1" id="addTasksModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -137,9 +232,40 @@
         </div>
     </div>
 
+    <!-- flashcard Modal -->
+    <div class="modal fade" tabindex="-1" id="addFlashcardsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Flashcard</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulaire de création de flashcard -->
+                    <form id="addFlashcardForm">
+                        <div class="mb-3">
+                            <label for="flashcardTitle" class="form-label">Flashcard Title</label>
+                            <input type="text" class="form-control" id="flashcardTitle" placeholder="Enter flashcard title">
+                            <div id="titleError" class="text-danger" style="display: none;">Title is required</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="flashcardDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="flashcardDescription" rows="3" placeholder="Enter flashcard description"></textarea>
+                            <div id="descriptionError" class="text-danger" style="display: none;">Description is required</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveFlashcardBtn">Save Flashcard</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
     <script src="Tasks.js"></script>
+    <script src="Flashcards.js"></script>
 </body>
 </html>
